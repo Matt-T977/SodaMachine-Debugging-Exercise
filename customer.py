@@ -2,10 +2,12 @@ import user_interface
 from backpack import Backpack
 from wallet import Wallet
 
+
 class Customer:
     def __init__(self):
         self.wallet = Wallet()
         self.backpack = Backpack()
+
 
     def gather_coins_from_wallet(self, selected_soda):
         """Method allowing user to choose coins from wallet for payment"""
@@ -36,7 +38,7 @@ class Customer:
     def add_coins_to_wallet(self, coins_list):
         """Method responsible for adding coins from a list into wallet's money list"""
         for coin in coins_list:
-            self.wallet.money.append(coins_list)
+            self.wallet.money.append(coin)
 
     def add_can_to_backpack(self, dispensed_can):
         """Adds instance of a can into backpack's puchased_cans list. No errors"""
@@ -64,5 +66,5 @@ class Customer:
         if len(self.backpack.purchased_cans) == 0:
             user_interface.output_text("You have no cans in your backpack")
         else:
-            for can in self.backpack1.purchased_cans:
+            for can in self.backpack.purchased_cans:
                 user_interface.output_text(can.name)

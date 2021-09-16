@@ -2,6 +2,7 @@ import coins
 import cans
 import user_interface
 
+
 class SodaMachine:
     def __init__(self):
         self.register = []
@@ -74,17 +75,17 @@ class SodaMachine:
     def gather_change_from_register(self, change_value):
         change_list = []
         while change_value > 0:
-            if change_value >= 0.25 and self.register_has_coin("quarter"):
-                change_list.append(self.get_coin_from_register("quarter"))
+            if change_value >= 0.25 and self.register_has_coin("Quarter"):
+                change_list.append(self.get_coin_from_register("Quarter"))
                 change_value -= 0.25
-            elif change_value >= 0.10 and self.register_has_coin("dime"):
-                change_list.append(self.get_coin_from_register("dime"))
+            elif change_value >= 0.10 and self.register_has_coin("Dime"):
+                change_list.append(self.get_coin_from_register("Dime"))
                 change_value -= 0.10
-            elif change_value >= 0.05 and self.register_has_coin("nickel"):
-                change_list.append(self.get_coin_from_register("nickel"))
+            elif change_value >= 0.05 and self.register_has_coin("Nickel"):
+                change_list.append(self.get_coin_from_register("Nickel"))
                 change_value -= 0.05
-            elif change_value >= 0.01 and self.register_has_coin("penny"):
-                change_list.append(self.get_coin_from_register("penny"))
+            elif change_value >= 0.01 and self.register_has_coin("Penny"):
+                change_list.append(self.get_coin_from_register("Penny"))
                 change_value -= 0.01
             elif change_value == 0:
                 break
@@ -99,7 +100,7 @@ class SodaMachine:
     def get_coin_from_register(self, coin_name):
         """Removes and returns a coin from register"""
         for coin in self.register:
-            if coin.name == "coin_name":
+            if coin.name == coin_name:
                 self.register.remove(coin)
                 return coin
         return None
@@ -107,13 +108,13 @@ class SodaMachine:
     def register_has_coin(self, coin_name):
         """Searches register for a type of coin, returns True if coin is found"""
         for coin in self.register:
-            if coin.name == "coin_name":
+            if coin.name == coin_name:
                 return True
         return False
 
     def determine_change_value(self, total_payment, selected_soda_price):
         """Determines amount of change needed by finding difference of payment amount and can price"""
-        return round(selected_soda_price - total_payment, 2)
+        return round(total_payment - selected_soda_price, 2)
 
     def calculate_coin_value(self, coin_list):
         """Takes in a list of coins, returns the monetary value of list."""
@@ -137,4 +138,4 @@ class SodaMachine:
     def deposit_coins_into_register(self, coin_list):
         """Takes in list of coins as argument, adds each coin from list to the register"""
         for coin in coin_list:
-            self.register.append(coin_list)
+            self.register.append(coin)

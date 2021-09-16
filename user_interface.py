@@ -66,7 +66,7 @@ def continue_prompt(text):
     return switcher.get(user_input, False)
 
 def soda_selection(inventory):
-    """Displays purchasable soda inventory and """
+    """Displays purchasable soda inventory and (Brett was Here)"""
     validated_user_selection = (False, None)
     soda_options = get_unique_can_names(inventory)
     while validated_user_selection[0] is False:
